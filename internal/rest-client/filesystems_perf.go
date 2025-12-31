@@ -18,10 +18,10 @@ type FileSystemsPerformanceList struct {
 func (fb *FBClient) GetFileSystemsPerformance(f *FileSystemsList,
 	protocol string) *FileSystemsPerformanceList {
 	uri := "/file-systems/performance"
-	if protocol != protocolAll && protocol != protocolNFS && protocol != protocolSMB {
-		return &FileSystemsPerformanceList{}
-	}
 	result := new(FileSystemsPerformanceList)
+	if protocol != protocolAll && protocol != protocolNFS && protocol != protocolSMB {
+		return result
+	}
 	const chunkSize = 10
 
 	var filesystems []FileSystem
